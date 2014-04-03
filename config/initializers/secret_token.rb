@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-BoardRoom::Application.config.secret_key_base = '1d33f70799746a42c624555dd32b31bfd769d36c997132eb4e528fb762b48016ac6971a3b4af0e26bcbae3f44a739853ba3f07d88264c5543d21e2ea365a593f'
+require 'securerandom'
+
+def secure_token
+	token_file = Rails.root.join('.secret')
+	if File.exist?(token_file)
+		# Use the existing token.
+		File.read(token_file).chomp
+	else
+		# Generate a new token and store it in token_file
+		token = SecureRandom.hex(64)
+		File.write(token_file, token)
+		token
+	end
+end
+
+BoardRoom::Application.config.secret_key_base = secure_token
