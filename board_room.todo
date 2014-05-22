@@ -1,0 +1,15 @@
+The Board-Room:
+  A website for myself and my friends to post reviews, rules explanations and arrange gaming meetups together
+
+  Start:
+    ☐ Initiated the repo, with version control
+    ☐ Set up on Heroku
+    ☐ Modified the Gemfile, .secret, .gitignore
+    ☐ Set up the test suite and modified the .rspec file
+
+  Remaining to do:
+    ☐ Finish the static pages
+    ☐ Create a user facility with signup, sign in and authorization
+    ☐ Create an interface to post reviews
+    ☐ Message facility
+    ☐ Blog post database

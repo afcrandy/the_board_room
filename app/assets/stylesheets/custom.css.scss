@@ -1,0 +1,122 @@
+@import "bootstrap";
+
+
+/* Mixin, Variables, etc. */
+
+@mixin box_sizing {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+/* Universal */
+
+html {
+	overflow-y: scroll;
+}
+
+
+body {
+	// background-color: #822F18;
+}
+
+
+
+
+
+/* Typography */
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1;
+}
+
+h1 {
+	font-size: 3em;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.2em;
+	letter-spacing: -1px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-weight: normal;
+}
+
+
+
+/* Header */
+
+.navbar { 
+	min-height: 30px !important;
+	.nav > li > a {
+		color: black;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		&:hover {
+			color: #000;
+		}
+	}
+}
+
+
+.main {
+	padding-left: 160px;
+	padding-right: 160px;
+}
+
+
+.navbar-main {
+	padding-left: 52px;
+	margin-right: 0px;
+	padding-right: 160px;
+}
+
+
+#board-room {
+	font-size: 60px;
+}
+
+
+
+
+
+/* Footer */
+
+footer {
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid #eaeaea;
+	a {
+		color: $gray;
+		&:hover {
+			color: black;
+		}
+	}
+	ul {
+		float: right;
+		list-style: none;
+		li {
+			float: left;
+			margin-left: 10px;
+		}
+	}
+}
+
+
+
+
+/* Miscellaneous */
+
+.debug_dump {
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	@include box_sizing;
+}
+
