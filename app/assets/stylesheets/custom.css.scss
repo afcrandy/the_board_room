@@ -79,6 +79,13 @@ h2 {
 
 #board-room {
 	font-size: 60px;
+	a {
+		color: black;
+		&:hover {
+			text-decoration: none;
+			color: black;
+		}
+	}
 }
 
 
