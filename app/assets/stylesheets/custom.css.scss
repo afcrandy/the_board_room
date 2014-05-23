@@ -177,12 +177,6 @@ input {
 }
 
 
-.field_with_errors {
-	@extend .control-group;
-	@extend .error;
-}
-
-
 .alert.bg-danger {
 	padding-top: 8px;
 	padding-bottom: 8px;
