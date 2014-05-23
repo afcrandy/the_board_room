@@ -18,3 +18,4 @@ doc/
 .DS_store
 .idea
 .secret
+*.todo

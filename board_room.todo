@@ -2,14 +2,19 @@ The Board-Room:
   A website for myself and my friends to post reviews, rules explanations and arrange gaming meetups together
 
   Start:
-    ☐ Initiated the repo, with version control
-    ☐ Set up on Heroku
-    ☐ Modified the Gemfile, .secret, .gitignore
-    ☐ Set up the test suite and modified the .rspec file
+    ✔ Initiated the repo, with version control @done (14-05-22 21:53)
+    ✔ Set up on Heroku @done (14-05-22 21:53)
+    ✔ Modified the Gemfile, .secret, .gitignore @done (14-05-22 21:53)
+    ✔ Set up the test suite and modified the .rspec file @done (14-05-22 21:53)
 
   Remaining to do:
-    ☐ Finish the static pages
+    ✔ Finish the static pages @done (14-05-22 21:53)
     ☐ Create a user facility with signup, sign in and authorization
     ☐ Create an interface to post reviews
     ☐ Message facility
     ☐ Blog post database
+
+
+      ☐ Change \.Gemfile\ to have a version of Sass-Rails Gem that is >= to 4.0.1 to remove the "cannot delete anonymous class" error when pushing to Heroku
+
+        
