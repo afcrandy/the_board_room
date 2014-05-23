@@ -1,5 +1,5 @@
 BoardRoom::Application.routes.draw do
-    get "users/new"
+    resources :users
     root "static_pages#home"
 
     match '/about',   to: 'static_pages#about',   via: 'get'
