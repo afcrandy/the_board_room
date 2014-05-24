@@ -1,6 +1,11 @@
 @import "bootstrap";
 
 
+
+#felix {
+	display: none;
+}
+
 /* Mixin, Variables, etc. */
 
 @mixin box_sizing {
