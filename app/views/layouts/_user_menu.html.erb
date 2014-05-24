@@ -1,0 +1,22 @@
+
+<% if signed_in? %>
+
+	<li class="dropdown" id="fat-menu">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			<%= current_user.name %> <b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li><%= link_to "Profile", current_user %></li>
+			<li class="divider"></li>
+			<li>
+				<%= link_to "Sign out", signout_path, method: "delete" %>
+			</li>
+		</ul>
+	</li>
+
+<% else %>
+
+	<li><%= link_to "Sign up", signup_path %></li>
+	<li><%= link_to "Sign in", signin_path %></li>
+
+<% end %>
