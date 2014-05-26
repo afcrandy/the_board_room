@@ -51,4 +51,48 @@ describe "Authentication" do
 	    end
 	end
 
+	describe "authorization" do
+	    
+		describe "for non-signed in users" do
+		    let(:user) { FactoryGirl.create(:user) }
+
+		    describe "in the Users controller" do
+		        
+		    	describe "when attempting to visit a protected page" do
+		    	    before do
+		    	    	visit user_path(user)
+		    	    	sign_in user
+		    	    end
+
+		    	    describe "after signing in" do
+		    	        it "should render the desired protected page" do
+		    	        	expect(page).to have_title('Sign in')
+		    	        end
+
+		    	        describe "when signing in again" do
+		    	            before do
+		    	            	click_link "Sign out"
+		    	            	visit signin_path
+		    	            	sign_in user
+		    	            end
+
+		    	            it "should render the default, profile, page" do
+		    	            	expect(page).to have_title(user.name)
+		    	            end
+		    	        end
+		    	    end
+		    	end
+
+		    	describe "visiting the profile page" do
+		    	    before { visit user_path(user) }
+
+		    	    it { should have_title('Sign in') }
+		    	end
+
+		    end
+
+		end
+
+	end
+
 end
