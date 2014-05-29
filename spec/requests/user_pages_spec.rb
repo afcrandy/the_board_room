@@ -28,6 +28,7 @@ describe "User pages" do
 		    before do
 		    	fill_in "Name",             with: "Example User"
 		    	fill_in "Email",            with: "user@example.com"
+		    	fill_in "Username",         with: "example_user"
 		    	fill_in "Password",         with: "foobar"
 		    	fill_in "Confirm Password", with: "foobar"
 		    end
@@ -40,9 +41,9 @@ describe "User pages" do
 		        before { click_button submit }
 		        let(:user) { User.find_by(email: 'user@example.com') }
 
-		        # it { should have_link('Sign out') }
+		        it { should have_link('Sign out') }
 		        it { should have_title(user.name) }
-		        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+		        it { should have_selector('div.alert.bg-success', text: 'Welcome') }
 		    end
 		end
 	end
@@ -50,9 +51,20 @@ describe "User pages" do
 
 	describe "profile page" do
 	    let(:user) { FactoryGirl.create(:user) }
-	    before { visit user_path(user) }
+	    before { sign_in(user) }
 
 	    it { should have_content(user.name) }
 	    it { should have_title(user.name) }
+	    it { should have_link(user.username, href: '#') }
+	    it { should_not have_link("Post a Review", href: '#') }
+
+	    describe "as admin user" do
+	        before do
+	        	user.toggle!(:admin)
+		        visit root_path
+	        end
+
+	        it { should have_link('Post a Review', href: '#') }
+	    end
 	end
 end

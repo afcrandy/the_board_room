@@ -4,7 +4,8 @@ describe User do
 
 	before do
 		@user = User.new(name: "Example User", email: "example_user@example.com",
-						password: "foobar", password_confirmation: "foobar")
+						password: "foobar", password_confirmation: "foobar",
+						username: "example_user")
 	end
 
 	subject { @user }
@@ -16,8 +17,21 @@ describe User do
 	it { should respond_to(:password_confirmation) }
 	it { should respond_to(:remember_token) }
 	it { should respond_to(:authenticate) }
+	it { should respond_to(:admin) }
+	it { should respond_to(:username) }
 
 	it { should be_valid }
+	it { should_not be_admin }
+
+	describe "with admin attribute set to 'true" do
+	    before do
+	    	@user.save!
+	    	@user.toggle!(:admin)
+	    end
+
+	    it { should be_admin }
+	end
+
 
 	describe "when name is not present" do
 	    before { @user.name = " " }
@@ -28,6 +42,7 @@ describe User do
 	    before { @user.name = "a" * 51 }
 	    it { should_not be_valid }
 	end
+
 
 	describe "when email is not present" do
 	    before { @user.email = " " }
@@ -75,6 +90,7 @@ describe User do
 	    end
 	end
 
+
 	describe "when password is not present" do
 	    before do
 	    	@user = User.new(name: "Example User", email: "user@example.com",
@@ -93,6 +109,7 @@ describe User do
 	    it { should_not be_valid }
 	end
 
+
 	describe "return value of authenticate method" do
 	    before { @user.save }
 	    let(:found_user) { User.find_by(email: @user.email) }
@@ -109,10 +126,67 @@ describe User do
 	    end
 	end
 
+
 	describe "remember token" do
 	    before { @user.save }
 
 	    its(:remember_token) { should_not be_blank }
+	end
+
+
+	describe "when username is not present" do
+	    before { @user.username = " " }
+	    it { should_not be_valid }
+	end
+
+	describe "when username is too short" do
+	    before { @user.username = "aaa" }
+	    it { should_not be_valid }
+	end
+
+	describe "when username is too long" do
+	    before { @user.username = "a" * 19 }
+	    it { should_not be_valid }
+	end
+
+	describe "when username is invalid" do
+	    it "should be invalid" do
+	    	usernames = ['hello*', 'hello-', 'hello=', 'hello(',
+	    				 'hello&', 'hello@', 'hello!', 'hello"',
+	    				 'hel lo', 'admin']
+	    	usernames.each do |invalid_uname|
+	    		@user.username = invalid_uname
+	    		expect(@user).not_to be_valid
+	    	end
+	    end
+	end
+
+	describe "when username is valid" do
+	    it "should be valid" do
+	    	usernames = %w[hello hel_lo hello9]
+	    	usernames.each do |valid_uname|
+	    		@user.username = valid_uname
+	    		expect(@user).to be_valid
+	    	end
+	    end
+	end
+
+	describe "when username is already taken" do
+	    before do
+	    	user_with_same_uname = @user.dup
+	    	user_with_same_uname.username = @user.username.upcase
+	    	user_with_same_uname.save
+	    end
+	    it { should_not be_valid }
+	end
+
+	describe "username with mixed case" do
+	    let(:mixed_case_uname) { "HeLlO" }
+	    it "should be saved as lower-case" do
+	    	@user.username = mixed_case_uname
+	    	@user.save
+	    	expect(@user.reload.username).to eq mixed_case_uname.downcase
+	    end
 	end
 
 end

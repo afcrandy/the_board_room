@@ -1,18 +1,10 @@
 <div>
 	<h1>Welcome to The Board Room, guys</h1>
-	<h5 style="text-align:center;">I know it's quite minimalist but it's still a ways to go</h5>
+	<h5 style="text-align:center;">I know it's quite <%= (current_user && current_user.admin?) ? "shite" : "minimalist" %> but it's still a ways to go</h5>
 </div>
 
-<script>
-	$(document).ready(function(){
-		$('#guys').click(function(){
-			$('#felix').css({"display":"inline"});
-		});
-	});
-</script>
-
 <div style="margin-top:40px;">
-	<p>This is for you lads</p>
+	<p>This is for you, <%= (current_user && current_user.admin?) ? "fuckers" : "lads" %></p>
 	<p id="guys">Ballo, Cyrus, Maltby, Morlandinho<span id="felix">, and finally Felix</span></p>
 
 	<p>Now that I'm writing this, I feel like we could have scores up on here. Perhaps an almost Banham-esque stats corner.... No, that would be stupid</p>
@@ -22,6 +14,6 @@
 		<li>Dobble</li>
 		<li>Hanabi (maybe)</li>
 		<li>Someone getting annoyed at the game Gods conspiring against him (my vote goes to Cyrus)</li>
-		<li>And motherfucking <a target="_blank" href="http://www.cardsagainsthumanity.com">Cards Against Humanity</a>!</li>
+		<li>And <%= "motherfucking " if (current_user && current_user.admin?) %><a target="_blank" href="http://www.cardsagainsthumanity.com">Cards Against Humanity</a>!</li>
 	</ul>
 </div>

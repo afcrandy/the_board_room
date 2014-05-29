@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
 						uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, length: { minimum: 6 }
+	VALID_UNAME_REGEX = /\A\w{4,18}\z/i
+	validates :username, presence: true, length: 4..18, uniqueness: { case_sensitive: false },
+						format: { with: VALID_UNAME_REGEX }, exclusion: { in: ["admin"] }
 
 
 	def User.new_remember_token
@@ -27,5 +30,6 @@ class User < ActiveRecord::Base
 
 		def lower_attrs
 			email.downcase!
+			username.downcase!
 		end
 end

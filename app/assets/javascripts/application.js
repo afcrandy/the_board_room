@@ -15,3 +15,9 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$('#guys').click(function(){
+		$('#felix').css({"display":"inline"});
+	});
+});
