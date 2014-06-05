@@ -6,4 +6,10 @@ FactoryGirl.define do
 		password "foobar"
 		password_confirmation "foobar"
 	end
+
+	factory :game do
+		name     "Example game"
+		website  "www.example.com"
+		genre_id 2
+	end
 end

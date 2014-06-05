@@ -1,0 +1,9 @@
+<section>
+	<h1>
+		<span class="pro-name"><%= @game.name %></span><br>
+		<% if !@game.website.nil? %>
+			<span class="pro-uname"><%= link_to 'website', @game.website, target: "_blank" %></span>
+		<% end %>
+	</h1>
+
+</section>

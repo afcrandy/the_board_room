@@ -101,6 +101,27 @@ describe "Authentication" do
 		    end
 		end
 
+		describe "as non-admin user" do
+		    let(:non_admin) { FactoryGirl.create(:user) }
+
+		    before { sign_in non_admin, no_capybara: true }
+
+		    describe "submitting a request to the Games#new action" do
+		        before { get add_game_path }
+		        specify { expect(response).to redirect_to(root_url) }
+		    end
+		end
+
+		# describe "as admin user" do
+		#     let(:admin) { FactoryGirl.create(:user, admin: true) }
+		#     before { sign_in admin, no_capybara: true }
+
+		#     describe "should be able to create a new game in the database" do
+		#     	before { post games_path }
+		#     	it { should have_title('New Game') }
+		#     end
+		# end
+
 	end
 
 end

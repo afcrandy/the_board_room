@@ -1,6 +1,7 @@
 
 <% if signed_in? %>
 
+	<li><%= link_to "Users", users_path %></li>
 	<li class="dropdown" id="fat-menu">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			<%= current_user.username %> <b class="caret"></b>
@@ -11,7 +12,7 @@
 				<li><%= link_to "Meetups", '#' %></li>
 				<li class="divider"></li>
 				<li><%= link_to "Post a Review", '#' %></li>
-				<li><%= link_to "Add a new Game", '#' %></li>
+				<li><%= link_to "Add a new Game", add_game_path %></li>
 			<% end %>
 			<li class="divider"></li>
 			<li>
