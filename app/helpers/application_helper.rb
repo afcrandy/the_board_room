@@ -9,4 +9,8 @@ module ApplicationHelper
 			"#{base_title} | #{name}"
 		end
 	end
+
+	def rude?
+		current_user && current_user.admin?
+	end
 end
