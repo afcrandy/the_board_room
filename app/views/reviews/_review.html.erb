@@ -1,0 +1,23 @@
+
+<div class="row" style="padding-bottom:10px">
+	<div class="content">
+		<%= review.content %>
+	</div>
+
+	<div>
+		<small>
+			<% if controller.controller_name == "users" %>
+				about <%= link_to review.game.name, review.game %>
+			<% elsif controller.controller_name == "games" %>
+				by <%= link_to review.author.username, review.author %>
+			<% end %>
+
+			<% if current_user && current_user?(review.author) %>
+				| <%= link_to "delete", review, method: :delete,
+				                      data: { confirm: "Are you sure?" },
+				                      title: review.content %>
+				<input type="hidden" name="review_id" value="<%= review.id %>">
+			<% end %>
+		</small>
+	</div>
+</div>

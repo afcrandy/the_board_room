@@ -8,5 +8,10 @@
 
 	<div class="col-md-7">
 		<%= render 'games/display' %>
+		<% if current_user && current_user.admin? %>
+			<div class="form-group" style="padding-top:10px">
+				<%= render 'review_form' %>
+			</div>
+		<% end %>
 	</div>
 </div>

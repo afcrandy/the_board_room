@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-	before_action :admin_user, only: [:new, :update]
+	before_action :admin_user, only: [:new, :create, :update]
 
 	def new
 		@game = Game.new
@@ -17,6 +17,8 @@ class GamesController < ApplicationController
 
 	def show
 		@game = Game.find(params[:id])
+		@reviews = @game.reviews[0..-1]
+		@post = Review.new
 	end
 
 	def index

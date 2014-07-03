@@ -2,6 +2,7 @@ BoardRoom::Application.routes.draw do
     root "static_pages#home"
     resources :users, except: :edit
     resources :sessions, only: [:new, :create, :destroy]
+    resources :reviews, only: [:new, :create, :show, :destroy]
     resources :games
 
     match '/signin',   to: 'sessions#new',         via: 'get'

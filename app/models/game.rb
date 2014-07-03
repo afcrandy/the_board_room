@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
 	before_save :titleize_name
 	before_save :prepend_link
 
+	has_many :reviews
+
 	validates :name, presence: true, uniqueness: { case_sensitive: false }
 
 

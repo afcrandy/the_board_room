@@ -17,4 +17,10 @@ The Board-Room:
 
       ☐ Change \.Gemfile\ to have a version of Sass-Rails Gem that is >= to 4.0.1 to remove the "cannot delete anonymous class" error when pushing to Heroku
 
+      ☐ Add some AJAX to signup form for taken usernames
+      ☐ Change the Games Index to search for the picture and display it
+      ☐ Make Review Form submit button disabled if user has already posted
+      ☐ Add a "New Review" form view, special route name
+      ☐ Implement ordering on Games and Users index
+      ☐ Implement before_action filters for Review and Game controller actions
         

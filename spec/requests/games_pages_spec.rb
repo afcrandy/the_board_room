@@ -41,8 +41,8 @@ describe "Games pages" do
 	end
 
 	describe "Game show page" do
-	    let(:game) { FactoryGirl.create(:game) }
-	    before { visit game_path(game.id) }
+	    let!(:game) { FactoryGirl.create(:game) }
+	    before { visit game_path(game) }
 
 	    it { should have_content(game.name) }
 	    it { should have_title(game.name) }

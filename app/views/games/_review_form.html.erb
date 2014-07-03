@@ -1,0 +1,11 @@
+
+<%= form_for(@post) do |f| %>
+
+	<%= render 'shared/error_messages', object: f.object %>
+	<div>
+		<%= f.text_area :content, class: "form-control", placeholder: "Compose a new review...", rows: "4" %>
+	</div>
+	<input type="hidden" name="review[game_id]" value="<%= @game.id %>">
+	<input type="hidden" name="review[author_id]" value="<%= current_user.id %>">
+	<%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

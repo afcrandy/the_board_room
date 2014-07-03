@@ -6,6 +6,7 @@ describe User do
 		@user = User.new(name: "Example User", email: "example_user@example.com",
 						password: "foobar", password_confirmation: "foobar",
 						username: "example_user")
+		@game = Game.new(name: "Hanabi")
 	end
 
 	subject { @user }
@@ -19,6 +20,7 @@ describe User do
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:admin) }
 	it { should respond_to(:username) }
+	it { should respond_to(:reviews) }
 
 	it { should be_valid }
 	it { should_not be_admin }
@@ -189,4 +191,24 @@ describe User do
 	    end
 	end
 
+	# describe "review associations" do
+	#     before do
+	#     	@user.save
+	#     	@game.save
+	#     end
+	#     let(:review) { Review.new(author_id: @user.id, game_id: @game.id, content: "It's a game") }
+
+	#     it "should have the review in his 'Posts' section" do
+	#     	expect(@user.reviews.to_a).to eq [review]
+	#     end
+
+	    # it "should destroy associated microposts" do
+	    # 	posts = @user.review.to_a
+	    # 	@user.destroy
+	    # 	expect(posts).not_to be_empty
+	    # 	posts.each do |post|
+	    # 		expect(Review.where(id: post.id)).to be_empty
+	    # 	end
+	    # end
+	# end
 end

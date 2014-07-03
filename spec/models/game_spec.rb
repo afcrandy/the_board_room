@@ -10,6 +10,7 @@ describe Game do
 	it { should respond_to(:name) }
 	it { should respond_to(:website) }
 	it { should respond_to(:genre_id) }
+	it { should respond_to(:reviews) }
 
 	it { should be_valid }
 

@@ -1,0 +1,7 @@
+<% provide(:title, "Review : #{@review.game.name}") %>
+
+<h1>Review for <%= @review.game.name %> <small>by <%= @review.author.name %></small></h1>
+
+<div class="content">
+	<%= @review.content %>
+</div>

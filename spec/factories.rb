@@ -10,6 +10,7 @@ FactoryGirl.define do
 	factory :game do
 		name     "Example game"
 		website  "www.example.com"
-		genre_id 2
+		genre_id 1
 	end
+
 end
